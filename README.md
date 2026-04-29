@@ -1,7 +1,8 @@
 <p align="center"><b>Fan of Simple and Functional Web Apps</b></p>
 
+---
 
-
+<p align="center"><b>Personal Projects</b></p>
 
 <div align="center">
   <a href="https://github.com/outlook84/yet-another-rclone-dashboard">
@@ -18,6 +19,9 @@
   </a>
   <a href="https://github.com/outlook84/mpv-webp-avif-generator">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=outlook84&repo=mpv-webp-avif-generator&theme=transparent" width="380" />
+  </a>
+  <a href="https://github.com/outlook84/astrbot_plugin_telethon_adapter">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=outlook84&repo=astrbot_plugin_telethon_adapter&theme=transparent" width="380" />
   </a>
 </div>
 
