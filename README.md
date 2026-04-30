@@ -14,6 +14,9 @@
   <a href="https://github.com/outlook84/journal-scope">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=outlook84&repo=journal-scope&theme=transparent" width="380" />
   </a>
+  <a href="https://github.com/outlook84/openlist-tvbox-gateway">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=outlook84&repo=openlist-tvbox-gateway&theme=transparent" width="380" />
+  </a>
   <a href="https://github.com/outlook84/mpv-handler-openlist">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=outlook84&repo=mpv-handler-openlist&theme=transparent" width="380" />
   </a>
