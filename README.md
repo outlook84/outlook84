@@ -8,6 +8,9 @@
   <a href="https://github.com/outlook84/yet-another-rclone-dashboard">
     <img src="profile/yet-another-rclone-dashboard.svg" width="380" />
   </a>
+  <a href="https://github.com/outlook84/dashbox">
+    <img src="profile/dashbox.svg" width="380" />
+  </a>
   <a href="https://github.com/outlook84/homer-go">
     <img src="profile/homer-go.svg" width="380" />
   </a>

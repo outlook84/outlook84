@@ -1,13 +1,51 @@
 name: Update README cards
 
 on:
+  push:
+    paths-ignore:
+      - "profile/*.svg"
   schedule:
     - cron: "0 3 * * 0"
   workflow_dispatch:
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        repo:
+          - yet-another-rclone-dashboard
+          - dashbox
+          - homer-go
+          - journal-scope
+          - openlist-tvbox-gateway
+          - mpv-handler-openlist
+          - mpv-webp-avif-generator
+          - astrbot_plugin_telethon_adapter
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Generate ${{ matrix.repo }} card
+        uses: readme-tools/github-readme-stats-action@v1
+        with:
+          card: pin
+          options: username=${{ github.repository_owner }}&repo=${{ matrix.repo }}&theme=transparent
+          path: ${{ matrix.repo }}.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload ${{ matrix.repo }} card
+        uses: actions/upload-artifact@v7
+        with:
+          name: card-${{ matrix.repo }}
+          path: ${{ matrix.repo }}.svg
+          if-no-files-found: error
+
+  commit:
+    runs-on: ubuntu-latest
+    needs: generate
 
     permissions:
       contents: write
@@ -15,61 +53,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Generate yet-another-rclone-dashboard card
-        uses: readme-tools/github-readme-stats-action@v1
+      - name: Download cards
+        uses: actions/download-artifact@v8
         with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=yet-another-rclone-dashboard&theme=transparent
-          path: profile/yet-another-rclone-dashboard.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate homer-go card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=homer-go&theme=transparent
-          path: profile/homer-go.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate journal-scope card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=journal-scope&theme=transparent
-          path: profile/journal-scope.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate openlist-tvbox-gateway card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=openlist-tvbox-gateway&theme=transparent
-          path: profile/openlist-tvbox-gateway.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate mpv-handler-openlist card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=mpv-handler-openlist&theme=transparent
-          path: profile/mpv-handler-openlist.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate mpv-webp-avif-generator card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=mpv-webp-avif-generator&theme=transparent
-          path: profile/mpv-webp-avif-generator.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate astrbot_plugin_telethon_adapter card
-        uses: readme-tools/github-readme-stats-action@v1
-        with:
-          card: pin
-          options: username=${{ github.repository_owner }}&repo=astrbot_plugin_telethon_adapter&theme=transparent
-          path: profile/astrbot_plugin_telethon_adapter.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: card-*
+          path: profile
+          merge-multiple: true
 
       - name: Commit cards
         run: |
