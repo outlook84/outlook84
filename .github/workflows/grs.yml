@@ -23,7 +23,7 @@ jobs:
           - openlist-tvbox-gateway
           - mpv-handler-openlist
           - mpv-webp-avif-generator
-          - astrbot_plugin_telethon_adapter
+          - cf-hysteria-realm
 
     steps:
       - uses: actions/checkout@v6

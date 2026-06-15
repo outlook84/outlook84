@@ -26,8 +26,7 @@
   <a href="https://github.com/outlook84/mpv-webp-avif-generator">
     <img src="profile/mpv-webp-avif-generator.svg" width="380" />
   </a>
-  <a href="https://github.com/outlook84/astrbot_plugin_telethon_adapter">
-    <img src="profile/astrbot_plugin_telethon_adapter.svg" width="380" />
+  <a href="https://github.com/outlook84/cf-hysteria-realm">
+    <img src="profile/cf-hysteria-realm.svg" width="380" />
   </a>
 </div>
-
